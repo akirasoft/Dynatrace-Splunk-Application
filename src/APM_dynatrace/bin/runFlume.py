@@ -47,28 +47,6 @@ pidfilename = os.path.join(appdir, 'flume.pid')
 
 cmdline = "java  -Xmx20m -Dlog4j.configuration=file:" + log4j + " -cp " + classpath + " org.apache.flume.node.Application -f " + flumeconf + " -n agent1"
 
-
-#if currentOS == 'posix':
-#	print "OS is POSIX based"
-#else:
-#	print "OS is not POSIX based"
-
-#def check_pid(pid):        
-#    """ Check For the existence of a unix pid. """
-#    try:
-#        os.kill(pid, 0)
-#    except OSError:
-#        return False
-#    else:
-#        return True
-#try:
-#        flumeFilepid = int(open("/opt/splunk/etc/apps/APM_dynatrace/flume1.pid").read())
-#        print flumeFilepid
-#except IOError as E:
-#        print "Unable to open file"
-#This is to check if there is already a lock file existing#
-
-	
 if currentOS == 'posix':
 	if os.access(pidfilename, os.F_OK):
 		flumeFilepid = int(open(pidfilename).read())
